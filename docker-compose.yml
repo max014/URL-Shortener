@@ -1,7 +1,17 @@
 version: '3'
 services:
-  web:
+  app:
+    container_name: express
+    restart: always
     build: .
-    command: npm start
     ports:
       - "80:8000"
+    volumes:
+      - .:/app
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
