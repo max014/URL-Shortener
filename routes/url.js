@@ -3,13 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const ShortURL = require('../models/ShortURL');
 
-router.get('/:id', (req, res, next) => {
-	const id = req.params.id;
-	ShortURL.findById(id)
-		.exec()
-		.then(item => res.redirect(item.original))
-		.catch(err => res.status(500).json(err));
-});
+const hostname = 'localhost';
 
 router.get('/', (req, res, next) => {
 	ShortURL.find()
@@ -23,7 +17,7 @@ router.post("/", (req, res, next) => {
   const url = new ShortURL({
     _id: id,
     original: req.body.original,
-    shortened: 'localhost/url/' + id
+    shortened: hostname + '/' + id
   });
   url
     .save()
