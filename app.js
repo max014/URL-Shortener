@@ -24,9 +24,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/url', urlRouter);
+app.use('/', indexRouter);
 
 app.use((req, res, next) => {
   const error = new Error('not found');

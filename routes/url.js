@@ -6,9 +6,9 @@ const ShortURL = require('../models/ShortURL');
 const hostname = 'localhost';
 
 router.get('/', (req, res, next) => {
-	ShortURL.find()
+	ShortURL.find({})
 		.exec()
-		.then(urls => res.redirect(urls))
+		.then(urls => res.json(urls))
 		.catch(err => res.status(500).json(err));
 });
 

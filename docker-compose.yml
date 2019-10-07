@@ -1,7 +1,6 @@
 version: '3'
 services:
-  app:
-    container_name: express
+  express:
     restart: always
     build: .
     ports:
@@ -11,7 +10,13 @@ services:
     links:
       - mongo
   mongo:
-    container_name: mongo
     image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - mongoData1:/data/configdb
+      - mongoData2:/data/db
+
+volumes:
+  mongoData1:
+  mongoData2:

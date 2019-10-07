@@ -8,4 +8,4 @@ const urlSchema = mongoose.Schema({
     expirationDate: { type: Date, default: new Date(+new Date() + 7*24*60*60*1000) }, // 7 days
 });
 
-module.exports = mongoose.model('UrlScore', urlSchema);
+module.exports = mongoose.model('ShortURL', urlSchema);

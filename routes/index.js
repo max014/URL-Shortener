@@ -10,4 +10,8 @@ router.get('/:id', (req, res, next) => {
 		.catch(err => res.status(500).json(err));
 });
 
+router.get('/', (req, res, next) => {
+	res.send('home');
+});
+
 module.exports = router;
