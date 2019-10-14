@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const ShortURL = require('../models/ShortURL');
+const makeid = require('../makeid');
 
 const hostname = 'localhost';
 
@@ -13,17 +14,17 @@ router.get('/', (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const id = new mongoose.Types.ObjectId();
+  const shortened = makeid();
   const url = new ShortURL({
-    _id: id,
+    _id: new mongoose.Types.ObjectId(),
     original: req.body.original,
-    shortened: hostname + '/' + id
+    shortened: shortened
   });
   url
     .save()
     .then(result => {
       res.status(201).json({
-        shortened: result.shortened
+        shortened: hostname + '/' + result.shortened
       });
     })
     .catch(err => res.status(500).json(err));

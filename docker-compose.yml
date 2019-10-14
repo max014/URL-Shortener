@@ -7,16 +7,4 @@ services:
       - "80:8000"
     volumes:
       - .:/app
-    links:
-      - mongo
-  mongo:
-    image: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongoData1:/data/configdb
-      - mongoData2:/data/db
-
-volumes:
-  mongoData1:
-  mongoData2:
+  

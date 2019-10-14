@@ -13,8 +13,11 @@ var app = express();
 // connect to Mongo daemon
 mongoose
   .connect(
-    'mongodb://mongo:27017/expressmongo',
-    { useNewUrlParser: true }
+    'mongodb://192.168.2.51:60000/expressmongo',
+    { 
+      useNewUrlParser: true,
+      mongos: true
+    }
   )
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
