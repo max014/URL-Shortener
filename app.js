@@ -13,7 +13,7 @@ var app = express();
 // connect to Mongo daemon
 mongoose
   .connect(
-    'mongodb://192.168.2.51:60000/expressmongo',
+    `mongodb://192.168.2.51:60000/express_url_shortener`, // connect to mongos router
     { 
       useNewUrlParser: true,
       mongos: true
